@@ -15,6 +15,7 @@ const bcrypt = require('bcryptjs')
 //import flash and session
 const flash = require('express-flash')
 const session = require('express-session')
+const MemoryStore = require('memorystore')(session)
 
 //use File system
 const fs = require('fs')
@@ -36,7 +37,9 @@ app.use(
             secure: false,
             httpOnly: true
         },
-        store: new session.MemoryStore(),
+        store: new MemoryStore({
+            checkPeriod: 86400000 // prune expired entries every 24h
+          }),
         saveUninitialized: true,
         resave: false,
         secret: "secretValue"

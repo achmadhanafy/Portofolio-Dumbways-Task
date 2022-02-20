@@ -1,5 +1,4 @@
 const express = require('express')
-const dbPool = require('./connection/db')
 
 const app = express()
 

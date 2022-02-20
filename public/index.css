@@ -1,0 +1,131 @@
+
+.icon{
+    font-size:xx-large;
+    margin-top: 1%;
+}
+.icon > a{
+    transition: 0.3s ;
+}
+.icon > a:hover{
+    font-size: 60px;
+}
+
+.card-top{
+    width: 55%;
+}
+
+#card-bottom{
+    width: 45%;
+}
+
+#projectList{
+    display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); grid-gap: 20px;
+}
+
+.myProject{
+    padding:60px 0px 60px 0px; background-color: rgba(248,248,248,255);
+}
+
+#cardMain{
+    box-shadow: 0px 0px 20px #00000040; padding:30px;
+}
+
+#containerAddProject{
+    width: 50%;
+}
+
+#containerContact{
+    width: 50%;
+}
+
+.containerProject{
+    display: flex;
+}
+
+.imageProject{
+    margin-right: 50px; box-shadow: 0px 0px 20px #00000040;
+    width:"700px"; height:"400px";
+}
+#date{
+    margin-right: 50px; font-size: x-large;
+}
+#containerLogin{
+    width: 50%;
+}
+#containerRegister{
+    width: 50%;
+}
+
+#h1-{
+    margin-top: 100px; margin-bottom:50px;
+}
+
+@media (max-width: 40.75em){
+    #card{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .card-top{
+        width: 100%;
+    }
+    
+    #card-bottom{
+        width: 100%;
+        margin-top: 30px;
+        padding: 0px;
+    }
+
+    #projectList{
+        display: grid;
+        grid-template-columns: repeat(1, minmax(0, 1fr)); grid-gap: 20px;
+    }
+
+    #cardMain{
+        padding: 10px;
+    }
+
+    #project{
+        padding: 10px;
+    }
+
+    #containerContact{
+        width: 90%;
+    }
+    
+    #containerAddProject{
+        width: 90%;
+    }
+    #techno{
+        display: flex;
+        flex-direction: column;
+    }
+
+    #techno > div{
+        display: flex;
+    }
+    #techno > div > div{
+        width: 50%;
+    }
+    .containerProject{
+        display: flex;
+        flex-direction: column;
+    }
+    .imageProject{
+        width: 350px;
+        height: 200px;
+        margin-bottom: 20px;
+    }
+    #date{
+        margin-right: 20px;
+    }
+    #containerLogin{
+        width: 80%;
+    }
+    #containerRegister{
+        width: 80%;
+    }
+    #h1-{
+        margin-top: 30px; margin-bottom:20px;
+    }
+}

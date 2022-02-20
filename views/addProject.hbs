@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+    </style> 
+    <link rel="stylesheet" href="/public/index.css">   
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/ba67138bc2.js" crossorigin="anonymous"></script>
+    <title>Add Project</title>
+</head>
+<body style="font-family: 'Poppins', sans-serif; background-color: #dde1e5;">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fs-5">
+    <div class="container-xxl">
+      <a class="navbar-brand me-5" href="/">
+        <img src="/public/assets/dumbways2.png" width="80px" alt="logo" />
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav">
+          <li class="nav-item fw-bolder">
+            <a class="nav-link" href="/">Home</a>
+          </li>
+          <li class="nav-item" style="margin-left: 20px;">
+            <a href="/project" class="nav-link list-active">Add Project</a>
+          </li>
+        </ul>
+      </div>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+          <p  style="text-decoration: none; color:grey;" class="nav-link list-active my-auto">Hello, {{user.name}}</p>
+          <a href="/logout" style="text-decoration: none; color:grey; margin-right:20px" class="nav-link list-active">Logout</a>
+        <a href="/contact-me" type="button" class="btn btn-dark px-3 fs-5">Contact Me</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container-lg">
+      <div id="containerAddProject" class="m-auto">
+          <h1 class="fw-bolder text-center" id="h1-">ADD MY PROJECT</h1>
+          <form class="fs-4"
+          {{#if index}}
+          action="../edit-project/{{index}}"
+          {{/if}}
+          {{#if noindex}}
+          action="/project"
+          {{/if}}
+           method="POST" enctype="multipart/form-data">
+              <div class="mb-3">
+                    <label for="projectName" class="form-label fw-bold">Project Name</label>
+                    <input 
+                    {{#if dataProject.name}}
+                    value="{{dataProject.name}}"
+                    {{/if}}
+                     type="text" name="projectName" class="form-control fs-4" id="projectName" placeholder="Your project name" required>
+                </div>
+                <div class="d-flex justify-content-between">
+                    <div class="mb-3" style="width: 49%;">
+                        <label for="startDate" class="form-label fw-bold">Start Date</label>
+                        <input
+                        {{#if startDate}}
+                        value ="{{startDate}}"
+                        {{/if}}
+                         type="date" name="startDate" class="form-control fs-4" id="startDate" required>
+                    </div>
+                    <div class="mb-3" style="width: 49%;">
+                        <label for="endDate" class="form-label fw-bold">End Date</label>
+                        <input
+                        {{#if endDate}}
+                        value="{{endDate}}"
+                        {{/if}}
+                         type="date" name="endDate" class="form-control fs-4" id="endDate"required>
+                    </div>
+                    
+                </div>
+                <div class="mb-3">
+                    <label for="description" class="form-label fw-bold">Description</label>
+                   <textarea class="form-control fs-4" id="description" name="description" style="resize: none;" rows="3" required>{{#if dataProject.description}}{{dataProject.description}}{{/if}}</textarea>
+                </div>
+                <div class="mb-3 fw-bold">
+                    Technologies
+                </div>
+                <div id="techno" class="d-flex justify-content-between">
+                    <div class="mb-3">
+                        <div class="form-check">
+                            <input
+                            {{#if react}}
+                            checked
+                            {{/if}}
+                             type="checkbox" id="techno1" class="form-check-input" name="techno1" value="https://drive.google.com/uc?id=1cAqx3rgP8o9OqdHwphTvUcJ8IkJpg1iE">
+                            <label class="form-check-label" for="reactJs">React JS</label>        
+                        </div>
+                        <div class="form-check">
+                            <input
+                            {{#if nodeJs}}
+                            checked
+                            {{/if}}
+                             type="checkbox" class="form-check-input" id="techno2" name="techno2" value="https://drive.google.com/uc?id=1x99_Yst-dGPMrsFlZQ3iwTxPOkBnTTaH">
+                            <label class="form-check-label" for="nodejs">Node JS</label>        
+                        </div>
+                    </div>
+                    <div style="mb-3">
+                        <div class="form-check">
+                            <input
+                            {{#if nextJs}}
+                            checked
+                            {{/if}}
+                             class="form-check-input" type="checkbox" id="techno3" name="techno3" value="https://drive.google.com/uc?id=1gsllo4mXnhgwadGbmLBzLBcRKYoWILaP">
+                            <label class="form-check-label" for="nextjs">Next JS</label>        
+                        </div>
+                        <div class="form-check">
+                            <input
+                            {{#if express}}
+                            checked
+                            {{/if}}
+                             class="form-check-input" type="checkbox" id="techno4" name="techno4" value="https://drive.google.com/uc?id=1ex2QS_t6s3AzacA5ll3DCmUU2Enx-KnP">
+                            <label class="form-check-label" for="express">Express</label>        
+                        </div>
+                    </div>
+                    <div style="mb-3">
+                        <div class="form-check">
+                            <input
+                            {{#if technoMongoDb}}
+                            checked
+                            {{/if}}
+                             class="form-check-input" type="checkbox" id="techno5" name="techno5" value="https://drive.google.com/uc?id=15ByzD2zDx-5DjQhOUzKRWR9rxNXaPA5U">
+                            <label class="form-check-label" for="mongodb">Mongo DB</label>        
+                        </div>
+                        <div class="form-check">
+                            <input
+                            {{#if postgres}}
+                            checked
+                            {{/if}}
+                             class="form-check-input" type="checkbox" id="techno6" name="techno6" value="https://drive.google.com/uc?id=15eaAtrchRLzqklAe5uzpy6ncH1_ySflg">
+                            <label class="form-check-label" for="postgres">Postgres SQL</label>        
+                        </div>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="formFileLg" class="form-label fw-bold">Upload Image</label>
+                    <input class="form-control form-control-lg" name="image" id="image" style="color: transparent;" type="file"
+                    {{#if noindex}}
+                    required
+                    {{/if}}
+                    >
+                    <div id="imagePreview" style="margin-top: 20px;">
+                       <img 
+                       {{#if dataProject.image}}
+                       src = "/uploads/{{dataProject.image}}"
+                       width="200px"
+                       height="100px"
+                       {{/if}}
+                        width="" height="" class="imagePreview-image">
+                       <div id="imageText">
+
+                       </div>
+                    </div>
+                </div>
+                 <div class="d-flex justify-content-end mb-5">
+                    <button type="submit" class="btn btn-dark rounded-pill px-5 mt-3 fs-5">Submit</button>
+                </div>
+          </form>
+      </div>
+  </div>
+   <script>
+            let uploadImage = document.getElementById('image')
+            let previewContainer = document.getElementById("imagePreview")
+            let previewImage = previewContainer.querySelector(".imagePreview-image")
+            let previewText = document.getElementById("imageText")
+
+            uploadImage.addEventListener("change", function(){
+                const file = this.files[0]
+                if (file) {
+                    const reader = new FileReader();
+                    previewText.innerHTML = `${file.name}`
+                    previewImage.style.display = "block";
+
+                    reader.addEventListener("load", function(){
+                        previewImage.setAttribute("src", this.result)
+                        previewImage.setAttribute("width", "200px")
+                        previewImage.setAttribute("height", "100px")
+                    })
+
+                    reader.readAsDataURL(file)
+                }
+            })
+            </script>
+</body>
+</html>

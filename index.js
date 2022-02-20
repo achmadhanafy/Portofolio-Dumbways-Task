@@ -1,5 +1,6 @@
 const express = require('express')
 
+
 const app = express()
 
 //connection
@@ -124,7 +125,7 @@ app.get('/', function (req,res){
             for(let i=0;i<data.length;i++){
                 data[i].description = truncateText(data[i].description, 200)
             }
-            
+            done()
             console.log(req.session.isLogin);
             res.render('index', {projectsDB : data, user: req.session.user})
         })
@@ -159,7 +160,7 @@ app.post('/register',(req,res)=>{
                         const query = `INSERT INTO tb_users(name,email,password) VALUES ('${name}','${email}','${hashPassword}')`
                         client.query(query,(err,result)=>{
                             if (err) throw err
-                            
+                            done()
 
                             req.flash('success', 'Registration success, please login to your account')
                             res.redirect('/login')
@@ -189,7 +190,7 @@ app.post('/login',(req,res)=>{
 
         client.query(query,(err,result)=>{
             if (err) throw err
-            
+            done()
 
             if (result.rowCount == 0){
                 req.flash('danger', 'Email doesnt Match')
@@ -260,7 +261,7 @@ app.post('/project',upload.single('image'),function(req,res){
                 }
             }
             
-           
+           done() 
         })
         res.redirect('/')
     })
@@ -289,7 +290,7 @@ app.get('/delete-project/:id', function(req,res){
         })
 
         deleteFile(`uploads/${lastImage}`)
-        
+        done()
         res.redirect('/')
     })
     })
@@ -349,7 +350,7 @@ app.get('/detail-project/:id', function (req,res){
                     }   
             }
             )
-            
+            done()
             res.render('detailProject', {projects : data[0],user: req.session.user})
         })
         })
@@ -407,7 +408,7 @@ app.get('/edit-project/:id', function(req,res){
                         postgres = true 
                     }
                 }
-                
+                done()
                 res.render('addProject',{dataProject,startDate,endDate,technoMongoDb,react,nextJs,express,postgres,nodeJs})
 
             })
@@ -476,7 +477,7 @@ app.post('/edit-project/:id',upload.single('image'), function(req,res){
             }
         })
         })
-        
+        done()
         res.redirect('/')
     })
 

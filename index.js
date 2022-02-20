@@ -10,7 +10,7 @@ const db = require('./connection/db')
 const upload = require('./middlewares/uploadFile')
 
 //Use bcrypt
-const bcrypt = require('bcrypt')
+const bcrypt = require('bcryptjs')
 
 //import flash and session
 const flash = require('express-flash')
